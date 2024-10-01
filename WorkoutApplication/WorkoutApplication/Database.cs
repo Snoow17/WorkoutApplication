@@ -54,12 +54,12 @@ namespace WorkoutApplication
                 .SingleOrDefaultAsync();
         }
 
-        public async Task EditMember(string id)
+        public async Task EditMember(string id, Member member)
         {
             ObjectId _id = new ObjectId(id);
-
+            
             await GetDb().GetCollection<Member>("Members")
-                .ReplaceOneAsync(b => b.Id == _id);
+                .ReplaceOneAsync(b => b.Id == _id, member);
         }
     }
 }
