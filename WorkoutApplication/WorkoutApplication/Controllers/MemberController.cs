@@ -72,13 +72,13 @@ namespace WorkoutApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditMember(string id)
+        public async Task<IActionResult> EditMember(string id, [FromBody] Member member)
         {
-            Database db = new Database();
-
-            await db.EditMember(id);
-
-            return Redirect("/Member");
+        Database db = new Database();
+        
+        await db.EditMember(id, member);
+        
+        return Redirect("/Member");
         }
     }
 }
