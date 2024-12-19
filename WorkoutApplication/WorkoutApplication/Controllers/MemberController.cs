@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using WorkoutApplication.Models;
@@ -54,7 +54,7 @@ namespace WorkoutApplication.Controllers
             return View(member);
         }
 
-        [HttpPost]
+        
         public async Task<IActionResult> ShowMember(string id)
         {
             Database db = new Database();
@@ -72,13 +72,13 @@ namespace WorkoutApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditMember(string id, [FromBody] Member member)
+        public async Task<IActionResult> Edit(string id, Member member)
         {
-        Database db = new Database();
-        
-        await db.EditMember(id, member);
-        
-        return Redirect("/Member");
+            Database db = new Database();
+
+            await db.EditMember(id, member);
+
+            return Redirect("/Member");
         }
     }
 }
